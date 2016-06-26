@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- dao -->
+	<bean id="staffDao" class="lin.linorder.dao.StaffDao" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" >
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="commonDao" class="lin.linorder.dao.CommonDao" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" >
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- service -->
+	<bean id="staffService" class="lin.linorder.service.StaffService"  scope="prototype">
+        <property name="staffDao">
+           <ref bean="staffDao" />
+        </property>
+    </bean>
+    <bean id="commonService" class="lin.linorder.service.CommonService"  scope="prototype">
+        <property name="commonDao">
+           <ref bean="commonDao" />
+        </property>
+    </bean>
+    
+	<!-- action -->
+	<bean id="staffAction" class="lin.linorder.action.StaffAction"  scope="prototype">
+        <property name="staffService">
+           <ref bean="staffService" />
+        </property>
+         <property name="commonService">
+           <ref bean="commonService" />
+        </property>
+        <property name="staff">
+           <ref bean="staff" />
+        </property>
+    </bean>
+    <!-- 
+    <bean id="loginAction" class="lin.linorder.action.LoginAction"  scope="prototype">
+        <property name="staffService">
+           <ref bean="staffService" />
+        </property>
+    </bean>-->
+    
+	 <bean id="staffShowAction" class="lin.linorder.action.StaffShowAction"  scope="prototype">
+        <property name="staffService">
+           <ref bean="staffService" />
+        </property>
+        <property name="staff">
+           <ref bean="staff" />
+        </property>
+    </bean>
+    
+     <bean id="commonAction" class="lin.linorder.action.CommonAction"  scope="prototype">
+        <property name="commonService">
+           <ref bean="commonService" />
+        </property>
+    </bean>
+	<!-- models -->
+	<bean id="staff" class="lin.linorder.models.Staff"  scope="prototype">
+	</bean> 
+	<bean id="City" class="lin.linorder.models.City"  scope="prototype">
+	</bean> 
+	<bean id="province" class="lin.linorder.models.Province"  scope="prototype">
+	</bean>    
+</beans>

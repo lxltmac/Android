@@ -1,0 +1,136 @@
+.charector-wrap{
+	position:relative;
+	width:180px;
+	height:300px;
+	left:50%;
+	margin-left:-90px;
+}
+.charector{
+	position:absolute;
+	width:180px;
+	height:300px;
+	background:url(../image/charector.png) 0 0 no-repeat;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:step-start;
+}
+@-webkit-keyframes person-xfast{
+	0% {
+		background-position:0 0;
+	}
+	14.3% {
+		background-position:-180px 0;
+	}
+	28.6% {
+		background-position:-360px 0;
+	}
+	42.6% {
+		background-position:-540px 0; 
+	}
+	57.2% {
+		background-position:-720px 0;
+	}
+	71.5% {
+		background-position:-900px 0;
+	}
+	85.5% {
+		background-position:-1080px 0;
+	}
+	100% {
+		background-position:0 0;
+	}
+}
+
+.xfast .charector{
+	-webkit-animation-name:person-xfast;
+	-webkit-animation-duration:500ms;
+}
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+.pagination-goto {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    padding: 0px 15px;
+}
+.pagination-goto button.btn{
+	width: 34px;
+	height: 30px;
+	border-radius: 0 !important;
+}
+.pagination-goto .btn {
+	font-size: 12px;
+    border-radius: 0px;
+    padding: 8px 16px;
+    height: 32px;
+    line-height: 14px;
+    padding: 8px;
+    margin-top:-1px;
+}
+.pagination-goto button.btn-default {
+    color: #333;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+}
+.pagination-goto input.ipt {
+    width: 40px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.pagination-goto .ipt, .form-inline .ipt {
+    width: 34px;
+}
+.pagination-goto input[type="text"]{
+	height: 30px;
+	margin-bottom:1px;
+	border-radius: 0 !important;
+}
+a:hover{
+text-decoration:none;
+}
+.alert-info{
+	width:350px;
+	height:20px;
+	margin-left:450px;
+	margin-top:-36px;
+	margin-bottom:-1px;
+}
+.alert-success{
+	width:350px;
+	height:20px;
+	margin-left:450px;
+	margin-top:-36px;
+	margin-bottom:-1px;
+}
+.alert-danger{
+	width:350px;
+	height:20px;
+	margin-left:450px;
+	margin-top:-36px;
+	margin-bottom:-1px;
+}
+#user-edit{
+	cursor: not-allowed;
+}
+#username-edit{
+	cursor: not-allowed;
+}
+#food-edit,#foodStyle-edit{
+	cursor: not-allowed;
+}
+#table-edit,#order_detial{
+	cursor: not-allowed;
+}
+
+#rename{
+	padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    font-size:17px;
+}
+#food_show td{
+	vertical-align: middle;
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="default" extends="struts-default,json-default" namespace="/">
+		<!-- 后台管理员 -->
+		<action name="staffAction_*" class="staffAction" method="{1}">
+			<result name="loginInput" type="redirect">/login.jsp</result>
+			<result name="addInput" type="redirect">/admin_register.jsp</result>
+			<result name="aSuccess" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">staffShowAction_show</param>
+			</result>
+			<result name="mPSuccess" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">staffShowAction_show</param>
+			</result>
+			<result name="query">/admin_queryStaff.jsp</result>
+			<result name="queryStaff">/staffSelf_query.jsp</result>
+			<result name="queryStaffSelf">/staffSelf_querySelf.jsp</result>
+			<result name="staffShowAction" type="redirect">/admin_right.jsp</result>
+		</action>
+		<!-- 后台管理员展示 -->
+		<action name="staffShowAction_*" class="staffShowAction" method="{1}">
+ 			<result name="success">/admin_right.jsp</result>
+ 		</action>	
+ 		<!-- Android客户端登录 -->
+ 		<action name="loginAction" class="loginAction" method="loginHttp">
+ 		</action>	
+ 		<!-- Android客户端注册 -->
+ 		<action name="registerAction" class="registerAction" method="registerHttp">
+ 		</action>	
+ 		<!-- Android客户端修改查找 -->
+ 		<action name="updateAction_*" class="updateAction" method="{1}">
+ 		</action>
+ 		<!-- Android客户端修改 -->
+ 		<action name="upUserAction" class="upUserAction" method="updateUserHttp">
+ 		</action>	
+ 		<!-- Android订单号提交 -->
+ 		<action name="addOrderAction" class="addOrderAction" method="addOrderHttp">
+ 		</action>	
+ 		<!-- Android订单号提交 -->
+ 		<action name="addOrderNumAction" class="addOrderNumAction" method="addOrderHttp">
+ 		</action>
+ 		<!-- Android催单号提交 -->
+ 		<action name="chuiOrderNumAction" class="chuiOrderNumAction" method="addOrderHttp">
+ 		</action>	
+ 		<!-- Android删除菜提交 -->
+ 		<action name="deleteOrderAction" class="deleteOrderAction" method="deleteOrderHttp">
+ 		</action>	
+ 		<!-- Android删除桌的所有菜提交 -->
+ 		<action name="deleteOrderAllAction" class="deleteOrderAllAction" method="deleteOrderHttp">
+ 		</action>	
+ 		<!-- Android删除桌的所有桌号提交 -->
+ 		<action name="deleteTableNumAction" class="deleteTableNumAction" method="deleteOrderHttp">
+ 		</action>	
+ 		<!-- Android账单提交 -->
+ 		<action name="addPayAction" class="addPayAction" method="addPayHttp">
+ 		</action>	
+ 		<!-- 公共管理 -->
+ 		<action name="commonAction_*" class="commonAction" method="{1}">
+ 		</action>	
+ 	</package>
+ 	<package name="food" extends="struts-default,json-default" namespace="/goods">
+ 		<!-- 菜品管理 -->
+ 		<action name="foodAction_*" class="foodAction" method="{1}">
+ 			<param name="savePath">/image/foodImg</param>
+ 			<result name="addFoodSuccess" type="redirectAction">
+				<param name="namespace">/goods</param>
+				<param name="actionName">foodShowAction_show</param>
+			</result>
+			<result name="addFoodInput" type="redirect">/goods/food_add.jsp</result>
+			<result name="foodShowAction" type="redirect">/goods/food_show.jsp</result>
+			<result name="query">/goods/food_queryFood.jsp</result>
+ 		</action>	
+ 		<!-- 菜品信息展示 -->
+		<action name="foodShowAction_*" class="foodShowAction" method="{1}">
+ 			<result name="success">/goods/food_show.jsp</result>
+ 		</action>	
+ 		<!-- 菜系管理 -->
+ 		<action name="foodStyleAction_*" class="foodStyleAction" method="{1}">
+ 			<result name="addFoodSuccess" type="redirectAction">
+				<param name="namespace">/goods</param>
+				<param name="actionName">foodStyleShowAction_show</param>
+			</result>
+			<result name="addFoodInput" type="redirect">/goods/foodStyle_add.jsp</result>
+			<result name="foodShowAction" type="redirect">/goods/foodStyle_show.jsp</result>
+			<result name="query">/goods/foodStyle_queryFood.jsp</result>
+ 		</action>	
+ 		<!-- 菜系信息展示 -->
+		<action name="foodStyleShowAction_*" class="foodStyleShowAction" method="{1}">
+ 			<result name="success">/goods/foodStyle_show.jsp</result>
+ 		</action>	
+	</package>
+	<package name="user" extends="struts-default,json-default" namespace="/user">
+ 		<!-- 前台用户管理 -->
+ 		<action name="userAction_*" class="userAction" method="{1}">
+ 			<result name="addUserSuccess" type="redirectAction">
+				<param name="namespace">/user</param>
+				<param name="actionName">userShowAction_show</param>
+			</result>
+			<result name="addUserInput" type="redirect">/user/add_user.jsp</result>
+			<result name="userShowAction" type="redirect">/user/show_user.jsp</result>
+			<result name="query">/user/query_user.jsp</result>
+ 		</action>	 
+ 		<!-- 前台用户信息展示-->
+		<action name="userShowAction_*" class="userShowAction" method="{1}">
+ 			<result name="success">/user/show_user.jsp</result>
+ 		</action>	
+	</package>
+	<package name="table" extends="struts-default,json-default" namespace="/table">
+ 		<!-- 桌号管理 -->
+ 		<action name="tableAction_*" class="tableAction" method="{1}">
+ 			<result name="addTableSuccess" type="redirectAction">
+				<param name="namespace">/table</param>
+				<param name="actionName">tableShowAction_show</param>
+			</result>
+			<result name="addTableInput" type="redirect">/table/table_add.jsp</result>
+			<result name="tableShowAction" type="redirect">/table/table_show.jsp</result>
+			<result name="query">/table/table_query.jsp</result>
+ 		</action>	 
+ 		<!-- 桌号信息展示-->
+		<action name="tableShowAction_*" class="tableShowAction" method="{1}">
+ 			<result name="success">/table/table_show.jsp</result>
+ 		</action>	
+	</package>
+	<package name="order" extends="struts-default,json-default" namespace="/order">
+ 		<!-- 订单管理 -->
+ 		<action name="orderAction_*" class="orderAction" method="{1}">
+ 			<result name="addOrderSuccess" type="redirectAction">
+				<param name="namespace">/order</param>
+				<param name="actionName">orderShowAction_show</param>
+			</result>
+			<result name="addOrderInput" type="redirect">/order/add_order.jsp</result>
+			<result name="orderShowAction" type="redirect">/order/show_order.jsp</result>
+ 		</action>	 
+ 		<!-- 订单信息展示-->
+		<action name="orderShowAction_*" class="orderShowAction" method="{1}">
+ 			<result name="successOrderList">/order/show_order.jsp</result>
+ 		</action>	
+ 		<action name="orderListShowAction_*" class="orderListShowAction" method="{1}">
+ 			<result name="successOrder">/order/show_orderList.jsp</result>
+ 		</action>
+ 		<action name="orderChuiShowAction_*" class="orderChuiShowAction" method="{1}">
+ 			<result name="successChui">/order/show_chuiorder.jsp</result>
+ 		</action>		
+	</package>
+	<package name="pay" extends="struts-default,json-default" namespace="/pay">
+		<!-- 账单删除-->
+		<action name="payAction_*" class="payAction" method="{1}">
+ 		</action>	
+ 		<!-- 订单信息展示-->
+		<action name="payShowAction_*" class="payShowAction" method="{1}">
+ 			<result name="successPay">/pay/show_pay.jsp</result>
+ 		</action>	
+	</package>
+</struts>

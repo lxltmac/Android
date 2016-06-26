@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="lin.linorder.models.Staff" table="staff">
+		<!-- 配置主键 -->
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<!-- 配置其他属性 -->
+		<property name="name" />
+		<property name="password" />
+		<property name="sex" />
+		<property name="email" />
+		<property name="address" />
+		<property name="duty"></property>
+		<property name="phone"></property>
+		<property name="deleteFlag" />
+		<property name="freeBuff" />
+		<!--配置外键  -->
+		<many-to-one name="city" column="cityID" unique="true" lazy="false" />
+	</class>
+</hibernate-mapping>

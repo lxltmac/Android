@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- dao -->
+	<bean id="userDao" class="lin.linorder.dao.user.UserDao" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" >
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- service -->
+	<bean id="userService" class="lin.linorder.service.user.UserService"  scope="prototype">
+        <property name="userDao">
+           <ref bean="userDao" />
+        </property>
+    </bean>
+    
+	<!-- action -->
+	<bean id="userAction" class="lin.linorder.action.user.UserAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+        <property name="user">
+           <ref bean="user" />
+        </property>
+    </bean>
+     <bean id="loginAction" class="lin.linorder.action.LoginAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+    </bean>
+     <bean id="registerAction" class="lin.linorder.action.RegisterAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+        <property name="user">
+           <ref bean="user" />
+        </property>
+    </bean>
+    <bean id="updateAction" class="lin.linorder.action.UpdateAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+        <property name="user">
+           <ref bean="user" />
+        </property>
+    </bean>
+     <bean id="upUserAction" class="lin.linorder.action.UpUserAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+        <property name="user">
+           <ref bean="user" />
+        </property>
+    </bean>
+    <bean id="userShowAction" class="lin.linorder.action.user.UserShowAction"  scope="prototype">
+        <property name="userService">
+           <ref bean="userService" />
+        </property>
+        <property name="user">
+           <ref bean="user" />
+        </property>
+    </bean>
+    
+	<!-- models -->
+	<bean id="user" class="lin.linorder.models.user.User"  scope="prototype">
+	</bean> 
+	
+</beans>
